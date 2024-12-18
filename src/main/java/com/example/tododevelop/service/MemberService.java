@@ -8,4 +8,6 @@ public interface MemberService {
     MemberResponseDto signUp(String username, String email, String password);
 
     List<MemberResponseDto> findAll();
+
+    MemberResponseDto findById(Long id);
 }

@@ -30,4 +30,10 @@ public class MemberServiceImpl implements MemberService {
                 .map(MemberResponseDto::toDto)
                 .toList();
     }
+
+    public MemberResponseDto findById(Long id) {
+        Member member = memberRepository.findByIdOrElseThrow(id);
+
+        return new MemberResponseDto(member.getId(), member.getUsername(), member.getEmail());
+    }
 }
