@@ -34,6 +34,13 @@ public class ScheduleServiceImpl implements ScheduleService{
 
         Schedule schedule = scheduleRepository.findByIdOrElseThrow(id);
 
+
         return new ScheduleResponseDto(schedule.getId(), schedule.getTitle(), schedule.getContents(), schedule.getUsername());
+    }
+
+    public void delete(Long id) {
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(id);
+
+        scheduleRepository.delete(schedule);
     }
 }
