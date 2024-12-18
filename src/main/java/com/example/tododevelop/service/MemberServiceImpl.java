@@ -4,6 +4,7 @@ import com.example.tododevelop.dto.MemberResponseDto;
 import com.example.tododevelop.dto.ScheduleResponseDto;
 import com.example.tododevelop.entity.Member;
 import com.example.tododevelop.repository.MemberRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,18 @@ public class MemberServiceImpl implements MemberService {
         Member member = memberRepository.findByIdOrElseThrow(id);
 
         return new MemberResponseDto(member.getId(), member.getUsername(), member.getEmail());
+    }
+
+    @Transactional
+    public void updateMember(Long id, String username, String email) {
+        Member member = memberRepository.findByIdOrElseThrow(id);
+
+        member.updateMember(username,email);
+    }
+
+    public void delete(Long id) {
+        Member member = memberRepository.findByIdOrElseThrow(id);
+
+        memberRepository.delete(member);
     }
 }

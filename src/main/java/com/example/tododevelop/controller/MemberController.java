@@ -36,4 +36,18 @@ public class MemberController {
 
         return new ResponseEntity<>(memberResponseDto,HttpStatus.OK);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<MemberRequestDto> updateMember(@PathVariable Long id, @RequestBody MemberRequestDto reqeustDto) {
+        memberService.updateMember(id,reqeustDto.getUsername(),reqeustDto.getEmail());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<MemberResponseDto> delete(@PathVariable Long id) {
+        memberService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

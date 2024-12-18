@@ -32,4 +32,8 @@ public class Member extends Time{
     }
 
 
+    public void updateMember(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 }

@@ -10,4 +10,8 @@ public interface MemberService {
     List<MemberResponseDto> findAll();
 
     MemberResponseDto findById(Long id);
+
+    void updateMember(Long id, String username, String email);
+
+    void delete(Long id);
 }
