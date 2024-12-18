@@ -40,6 +40,15 @@ public class ScheduleController {
         return new ResponseEntity<>(scheduleResponseDto,HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateSchedule(@PathVariable Long id,@RequestBody ScheduleRequestDto requestDto){
+
+       scheduleService.updateSchedule(id,requestDto.getTitle(),requestDto.getContents());
+
+        return null;
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ScheduleResponseDto> delete(@PathVariable Long id){
         scheduleService.delete(id);

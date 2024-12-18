@@ -31,4 +31,8 @@ public class Schedule extends Time {
         this.username = username;
     }
 
+    public void updateSchedule(String title,String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 }

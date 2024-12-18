@@ -3,6 +3,7 @@ package com.example.tododevelop.service;
 import com.example.tododevelop.dto.ScheduleResponseDto;
 import com.example.tododevelop.entity.Schedule;
 import com.example.tododevelop.repository.ScheduleRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,4 +44,13 @@ public class ScheduleServiceImpl implements ScheduleService{
 
         scheduleRepository.delete(schedule);
     }
+
+    @Transactional
+    public void updateSchedule(Long id, String Title, String Contents) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(id);
+
+        schedule.updateSchedule(Title,Contents);
+    }
+
 }

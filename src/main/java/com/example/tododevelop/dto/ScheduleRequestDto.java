@@ -1,5 +1,6 @@
 package com.example.tododevelop.dto;
 
+import com.example.tododevelop.entity.Schedule;
 import lombok.Getter;
 
 @Getter
