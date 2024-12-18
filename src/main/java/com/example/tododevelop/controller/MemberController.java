@@ -6,10 +6,9 @@ import com.example.tododevelop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/members")
@@ -22,5 +21,12 @@ public class MemberController {
         MemberResponseDto memberResponseDto = memberService.signUp(requestDto.getUsername(),requestDto.getEmail(),requestDto.getPassword());
 
         return new ResponseEntity<>(memberResponseDto,HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MemberResponseDto>> findALl(){
+        List<MemberResponseDto> memberResponseDtoList = memberService.findAll();
+
+        return new ResponseEntity<>(memberResponseDtoList,HttpStatus.OK);
     }
 }

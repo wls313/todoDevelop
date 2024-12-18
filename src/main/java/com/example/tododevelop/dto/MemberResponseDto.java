@@ -1,5 +1,6 @@
 package com.example.tododevelop.dto;
 
+import com.example.tododevelop.entity.Member;
 import lombok.Getter;
 
 @Getter
@@ -17,5 +18,9 @@ public class MemberResponseDto {
         this.id = id;
         this.username = username;
         this.email = email;
+    }
+
+    public static MemberResponseDto toDto(Member member) {
+        return new MemberResponseDto(member.getId(), member.getUsername(), member.getEmail());
     }
 }

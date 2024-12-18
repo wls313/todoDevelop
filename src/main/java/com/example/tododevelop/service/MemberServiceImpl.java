@@ -1,10 +1,13 @@
 package com.example.tododevelop.service;
 
 import com.example.tododevelop.dto.MemberResponseDto;
+import com.example.tododevelop.dto.ScheduleResponseDto;
 import com.example.tododevelop.entity.Member;
 import com.example.tododevelop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -18,5 +21,13 @@ public class MemberServiceImpl implements MemberService {
         Member savedmember = memberRepository.save(member);
 
         return new MemberResponseDto(savedmember.getId(), savedmember.getUsername(), savedmember.getEmail());
+    }
+
+    @Override
+    public List<MemberResponseDto> findAll() {
+        return memberRepository.findAll()
+                .stream()
+                .map(MemberResponseDto::toDto)
+                .toList();
     }
 }
