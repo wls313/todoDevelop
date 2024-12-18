@@ -2,6 +2,7 @@ package com.example.tododevelop.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "schedule")
@@ -21,8 +22,9 @@ public class Schedule extends Time {
     @Column(nullable = false)
     private String username;
 
+    @Setter
     @ManyToOne
-    @JoinColumn(name = "member_id" , nullable = false)
+    @JoinColumn(name = "member_id")
 
     private Member member;
 
@@ -40,4 +42,5 @@ public class Schedule extends Time {
         this.title = title;
         this.contents = contents;
     }
+
 }
