@@ -13,7 +13,7 @@ public interface MemberService {
 
     void updateMember(Long id, String username, String email);
 
-    void delete(Long id);
-
     void updatePassword(Long id, String oldPassword, String newPassword);
+
+    void delete(Long id);
 }
