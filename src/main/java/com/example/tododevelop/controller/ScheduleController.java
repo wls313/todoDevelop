@@ -28,6 +28,15 @@ public class ScheduleController {
     public ResponseEntity<List<ScheduleResponseDto>> findAll(){
         List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll();
 
-    return new ResponseEntity<>(scheduleResponseDtoList,HttpStatus.OK);
+        return new ResponseEntity<>(scheduleResponseDtoList,HttpStatus.OK);
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ScheduleResponseDto> findById(@PathVariable Long id){
+
+        ScheduleResponseDto scheduleResponseDto = scheduleService.findById(id);
+
+        return new ResponseEntity<>(scheduleResponseDto,HttpStatus.OK);
     }
 }

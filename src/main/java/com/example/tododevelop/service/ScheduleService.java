@@ -9,4 +9,6 @@ public interface ScheduleService {
     ScheduleResponseDto save(String title, String contents, String username);
 
     List<ScheduleResponseDto> findAll();
+
+    ScheduleResponseDto findById(Long id);
 }

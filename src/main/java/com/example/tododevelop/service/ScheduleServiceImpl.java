@@ -6,7 +6,6 @@ import com.example.tododevelop.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,7 +13,6 @@ import java.util.List;
 public class ScheduleServiceImpl implements ScheduleService{
     private final ScheduleRepository scheduleRepository;
 
-    @Override
     public ScheduleResponseDto save(String title, String contents, String username) {
 
         Schedule schedule = new Schedule(title,contents,username);
@@ -24,12 +22,18 @@ public class ScheduleServiceImpl implements ScheduleService{
         return new ScheduleResponseDto(schedule.getId(),schedule.getTitle(), schedule.getContents(), schedule.getUsername());
     }
 
-    @Override
     public List<ScheduleResponseDto> findAll() {
 
         return scheduleRepository.findAll()
                 .stream()
                 .map(ScheduleResponseDto::toDto)
                 .toList();
+    }
+
+    public ScheduleResponseDto findById(Long id) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(id);
+
+        return new ScheduleResponseDto(schedule.getId(), schedule.getTitle(), schedule.getContents(), schedule.getUsername());
     }
 }
