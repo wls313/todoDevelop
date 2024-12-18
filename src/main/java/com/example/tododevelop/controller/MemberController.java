@@ -1,5 +1,6 @@
 package com.example.tododevelop.controller;
 
+import com.example.tododevelop.dto.MemberPasswordRequestDto;
 import com.example.tododevelop.dto.MemberRequestDto;
 import com.example.tododevelop.dto.MemberResponseDto;
 import com.example.tododevelop.service.MemberService;
@@ -38,8 +39,15 @@ public class MemberController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<MemberRequestDto> updateMember(@PathVariable Long id, @RequestBody MemberRequestDto reqeustDto) {
-        memberService.updateMember(id,reqeustDto.getUsername(),reqeustDto.getEmail());
+    public ResponseEntity<MemberRequestDto> updateMember(@PathVariable Long id, @RequestBody MemberRequestDto requestDto) {
+        memberService.updateMember(id,requestDto.getUsername(),requestDto.getEmail());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PatchMapping("/password/{id}")
+    public ResponseEntity<MemberPasswordRequestDto> updatePassword(@PathVariable Long id, @RequestBody MemberPasswordRequestDto requestDto) {
+        memberService.updatePassword(id,requestDto.getOldPassword(),requestDto.getNewPassword());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

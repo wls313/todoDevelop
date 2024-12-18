@@ -12,9 +12,10 @@ public class ScheduleRequestDto {
 
     private final String username;
 
-    public ScheduleRequestDto(String title, String contents, String username) {
+    public ScheduleRequestDto(String title, String contents, String username, String password) {
         this.title = title;
         this.contents = contents;
         this.username = username;
     }
+
 }

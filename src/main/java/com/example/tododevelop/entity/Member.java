@@ -36,4 +36,8 @@ public class Member extends Time{
         this.username = username;
         this.email = email;
     }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
 }
