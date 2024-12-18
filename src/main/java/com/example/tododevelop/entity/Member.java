@@ -17,4 +17,19 @@ public class Member extends Time{
 
     @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    public Member() {
+
+    }
+
+    public Member(String username, String emaill, String password) {
+        this.username = username;
+        this.email = emaill;
+        this.password = password;
+    }
+
+
 }
